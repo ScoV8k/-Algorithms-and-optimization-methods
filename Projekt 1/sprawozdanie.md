@@ -40,16 +40,8 @@ gdzie $\tilde{t}_r$ to czas odbioru, $t_{nad,i}$ to czas nadania przez satelitę
 
 $$\sqrt{(x-X_i)^2+(y-Y_i)^2+(z-Z_i)^2} = c(t_i + b), \qquad i = 1, 2, \ldots, N$$
 
-W pliku mamy $N=8$ obserwacji. Do wyznaczenia czterech niewiadomych potrzeba minimum czterech satelitów, więc układ jest nadokreślony i rozwiążemy go metodą najmniejszych kwadratów.
 
 ## 2. Sformułowanie zadania optymalizacji
-
-W rzeczywistych pomiarach równania z pkt. 1 nie muszą być spełnione dokładnie. Definiujemy resztę pomiarową:
-
-$$
-f_i(x,y,z,b)=\sqrt{(x-X_i)^2+(y-Y_i)^2+(z-Z_i)^2}-c(t_i+b),
-\qquad i=1,\ldots,N.
-$$
 
 Wektor zmiennych decyzyjnych to $\mathbf{q}=(x,y,z,b)^T$. Zadanie optymalizacji:
 
@@ -160,6 +152,9 @@ Wyznaczony punkt znajduje się w miejscowości Brwinów przy ulicy Grodziska 46.
 Metoda Levenberga-Marquardta pozwoliła wyznaczyć położenie odbiornika GPS z normą reszt na poziomie $9\cdot10^{-5}\ \mathrm{m}$ i błędęm zegara wynoszącym $b \approx 0$
 
 Przeprowadzona analiza wrażliwości wykazała, że:
+
 - wybór punktu startowego w otoczeniu Ziemi nie wpływa na końcowy wynik optymalizacji (zmienia się jedynie liczba iteracji), natomiast start z odległości rzędu $10^8\ \mathrm{m}$ powoduje brak zbieżności do właściwego minimum,
+
 - w teście kryteriów stopu 20 wywołań funkcji reszt pozwala określić pozycję z dokładnością do 0,6 m, a 26 wywołań daje błąd poniżej mikrometra; ustawienie tolerancji na poziomie $10^{-3}$ jest w pełni wystarczające,
+
 - błędy pomiaru czasu propagują się na błąd pozycji z wyraźną dominacją błędu wysokościowego (w próbie Monte Carlo dla szumu 10 ns odchylenie standardowe wysokości wyniosło 5,19 m przy ok. 2–3 m dla składowych poziomych).
